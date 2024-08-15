@@ -1,0 +1,10 @@
+<h1>
+<%= @user.email %>
+</h1>
+<ul>
+  <% @user.events.each do |event| %>
+    <li>
+      <%= event.location %>
+    </li>
+  <% end %>
+</ul>
