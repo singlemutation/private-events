@@ -1,10 +1,13 @@
-<h1>
+<h1 class="max-w-sm mx-auto mb-5 mt-5 text-xl" >
 <%= @user.email %>
 </h1>
-<ul>
-  <% @user.events.each do |event| %>
-    <li>
-      <%= event.location %>
-    </li>
-  <% end %>
-</ul>
+<div class="block max-w-sm p-6 border border-gray-200 rounded-lg" >
+  <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Events I'm hosting</h2>
+  <ul>
+    <% @events.each do |event| %>
+      <li class="font-normal text-gray-700" >
+       <%= event.location %>
+      </li>
+    <% end %>
+  </ul> 
+</div>

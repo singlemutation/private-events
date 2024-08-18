@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -14,9 +15,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if current_user %>
-      <li><%= button_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+      <div><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center absolute top-0 right-0" %></div>
       <% else %>
-        <li><%= link_to "Sign up", new_user_registration_path %></li> 
+        <div><%= link_to "Sign up", new_user_registration_path %></div> 
       <% end %>
     <%= yield %>
   </body>
