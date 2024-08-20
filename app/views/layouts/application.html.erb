@@ -12,16 +12,26 @@
   </head>
 
   <body>
+    <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+      <div class="mb-2 sm:mb-0">
+        <%= link_to 'Home', root_path, class: "text-2xl no-underline text-grey-darkest hover:text-blue-dark" %>
+      </div>
+      <div>
+        <% if current_user %>
+          <%= link_to 'My Events', user_path(current_user), class: "text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" %>
+          <%= link_to 'Sign Out', destroy_user_session_path, class: "text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" %>
+        <% else %>
+          <%= link_to 'Log In', new_user_session_path, class: "text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" %>
+        <% end %>
+      </div>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if current_user %>
       <div>
       Signed in as:
       <%= current_user.email %>
-      </div>
-      <div><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center absolute top-0 right-0" %></div>
-      <% else %>
-        <div><%= link_to "Sign up", new_user_registration_path %></div> 
       <% end %>
     <%= yield %>
   </body>
