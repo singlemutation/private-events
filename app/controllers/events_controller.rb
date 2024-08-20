@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @creator = @event.creator
   end
 
   def new
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.created_events.build(event_params)
 
     if @event.save
       redirect_to @event
@@ -22,9 +23,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @attendee = current_user
+    @event.attendees << @attendee
+    redirect_to root_path, notice: 'Thanks for signing up!'
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:location, :date, :user_id)
+    params.require(:event).permit(:location, :date, :creator_id)
   end
 end

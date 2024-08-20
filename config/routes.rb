@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root 'events#index'
 
   get '/events', to: 'events#index'
-  get "/users/:id", to: "users#show"
+  # get "/users/:id", to: "users#show"
+
+  resources :attended_events
+
+  resources :users
 
   resources :events
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,7 +1,7 @@
 <h1 class="max-w-sm mx-auto mb-5 mt-5 text-xl">New Event</h1>
 
 <%= form_with model: @event, class: "max-w-sm mx-auto" do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :creator_id, value: current_user.id %>
   <div class="mb-5">
     <%= form.label :location, class: "block mb-2 text-sm font-medium text-gray-900" %>
     <%= form.text_field :location, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>

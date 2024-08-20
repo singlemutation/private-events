@@ -7,5 +7,9 @@
 </div>
 
 <div>
-<%= @event.creator.email %>
+<%= link_to @creator.email, user_path(@creator) %>
+</div>
+
+<div>
+<%= button_to 'Sign up to attend', event_path, method: 'patch' %>
 </div>

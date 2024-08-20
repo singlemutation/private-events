@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :events, inverse_of: 'creator'
-  has_many :attended_events
-  has_many :events, through: :attended_events
+  has_many :attended_events, foreign_key: :event_attendee_id
+  has_many :events_attended, through: :attended_events
+  has_many :created_events, foreign_key: :creator_id, class_name: "Event"
 end
