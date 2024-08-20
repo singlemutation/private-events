@@ -13,11 +13,24 @@
 </div>
 <div class="block max-w-sm p-6 border border-gray-200 rounded-lg" >
   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Events I'm attending</h2>
+  <h3 class="mb-1 text-l font-bold">Past Events</h3>
   <ul>
     <% @attended_events.each do |event| %>
       <li class="font-normal text-gray-700" >
+      <% if event.date < Time.now %>
        <%= link_to event.location, event_path(event.id) %>
       </li>
+      <% end %>
+    <% end %>
+  </ul> 
+  <h3 class="mb-1 text-l font-bold">Future Events</h3>
+  <ul>
+    <% @attended_events.each do |event| %>
+      <li class="font-normal text-gray-700" >
+      <% if event.date > Time.now %>
+       <%= link_to event.location, event_path(event.id) %>
+      </li>
+      <% end %>
     <% end %>
   </ul> 
 </div>
