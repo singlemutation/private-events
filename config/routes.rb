@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/index'
   devise_for :users
+  get 'users/index'
+
   root 'events#index'
 
   get '/events', to: 'events#index'
