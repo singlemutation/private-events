@@ -19,6 +19,10 @@
       <% else %>
         <div><%= link_to "Sign up", new_user_registration_path %></div> 
       <% end %>
+      <div>
+      Signed in as:
+      <%= current_user.email %>
+      </div>
     <%= yield %>
   </body>
 </html>
